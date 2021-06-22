@@ -1,0 +1,26 @@
+.Team__stats {
+  position: relative;
+  display: flex;
+  max-width: 1240px;
+  justify-items: center;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 5px;
+  color: white;
+  background-color: #291720;
+  .Stats__list {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    border-radius: 5px;
+    padding: 10px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    &-item{
+      padding: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+}
+

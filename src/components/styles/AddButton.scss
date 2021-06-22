@@ -1,0 +1,20 @@
+.Character__buttons-add {
+  width: 100%;
+  outline: none;
+  border: 2px rgb(230, 230, 230) solid;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  background-color: #0787c2;
+  margin-bottom: 2px;
+  cursor: pointer;
+  &.disabled {
+    background-color: #545657;
+    &:hover {
+      background-color: #3d3e3f;
+    }
+  }
+  &:hover {
+    background-color: #0498dd;
+  }
+}

@@ -1,0 +1,11 @@
+.Image__container {
+  max-width: 600px;
+  min-width: 300;
+  width: 70%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  img {
+    width: 100%;
+  }
+}
