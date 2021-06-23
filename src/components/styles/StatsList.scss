@@ -6,8 +6,9 @@
   width: 70%;
   margin: 0 auto;
   border-radius: 5px;
-  color: white;
-  background-color: #291720;
+  color: black;
+  background-color: #2196f3;
+  margin-bottom: 20px;
   .Stats__list {
     width: 100%;
     display: flex;
@@ -18,7 +19,7 @@
     flex-wrap: wrap;
     &-item{
       padding: 10px;
-      font-size: 1.4rem;
+      font-size: 14px;
       font-weight: 600;
     }
   }

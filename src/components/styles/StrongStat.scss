@@ -1,10 +1,15 @@
 .Stats__powerful {
-  background-color: #FB8B24;
+  background-color: #2196f3 ;
   position: relative;
   padding: 10px;
+  margin: 10px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 80px;
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
 }

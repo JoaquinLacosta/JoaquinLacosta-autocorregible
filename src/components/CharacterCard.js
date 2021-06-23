@@ -1,54 +1,72 @@
 import React, { useContext } from "react"
 import AppContext from "../context/AppContext"
+import { useHistory } from "react-router-dom"
 import RemoveButton from "../components/RemoveButton"
 import AddButtom from "../components/AddButton"
 import { Link } from "react-router-dom"
-import "./styles/CharacterCard.scss"
 
 const CharacterCard = (props) => {
   const { removeFromTeam, removeHero, removeVillain, addVillain, addHero } = useContext(AppContext)
+  const history = useHistory()
   const isHero = props.biography.alignment == "good"
   const handleRemove = (props) => () => {
     if(props.biography.alignment == "good") {
       removeHero(props)
       removeFromTeam(props)
+      Swal.fire({
+        icon: 'success',
+        title: 'Heroe elminado',
+        text: ''
+    })
     }
     if(props.biography.alignment == "bad") {
       removeVillain(props)
       removeFromTeam(props)
+      Swal.fire({
+        icon: 'success',
+        title: 'Villano eliminado',
+        text: ''
+    })
     }
   }
 
   const Hero = (props) => () => {
     addHero(props)
+    Swal.fire({
+      icon: 'success',
+      title: 'Heroe agregado',
+      text: ''
+  })
   }
 
   const Villain = (props) => () => {
     addVillain(props)
+    Swal.fire({
+      icon: 'success',
+      title: 'Villano agregado',
+      text: ''
+  })
   }
 
 
   return(
-    <div className="Character__card">
-      <div className="Image__wrapper" style={{backgroundImage: `url(${props.image.url})`}}>
-      </div>
+    <div className="alkemy-card">
+      <img src={props.image.url}/>
       <div className="Character__data-wrapper">
-        <ul className="Character__data-list">
-          <li className="Data__list-item">Name: {props.name}</li>
-          <li className="Data__list-item">Intelligence: {props.powerstats.intelligence}</li>
-          <li className="Data__list-item">Strength: {props.powerstats.strength}</li>
-          <li className="Data__list-item">Speed: {props.powerstats.speed}</li>
-          <li className="Data__list-item">Durability: {props.powerstats.durability}</li>
-          <li className="Data__list-item">Power: {props.powerstats.power}</li>
-          <li className="Data__list-item">Combat: {props.powerstats.combat}</li>
-        </ul>
+          <h5 className="card-title">{props.name}</h5>
+          <p className="card-text">Intelligence: {props.powerstats.intelligence}</p>
+          <p className="card-text">Strength: {props.powerstats.strength}</p>
+          <p className="card-text">Speed: {props.powerstats.speed}</p>
+          <p className="card-text">Durability: {props.powerstats.durability}</p>
+          <p className="card-text">Power: {props.powerstats.power}</p>
+          <p className="card-text">Combat: {props.powerstats.combat}</p>
         <div className="Character__buttons">
           {
-            props.isTeam ? <RemoveButton onClick={handleRemove(props)} className="Character__buttons-remove" title="Remove from team" />
+            props.isTeam ? <RemoveButton onClick={handleRemove(props)} title="Remove from team" />
             : <AddButtom {...props}  onClick={isHero ? Hero(props) : Villain(props)} />
           }
           
-          <Link to={`/character/${props.id}`} className="Details__button">Details</Link>
+          <button onClick={() => history.push(`/character/${props.id}`)} className="alkemy-btn-primary">Details</button>
         </div>
       </div>
     </div>

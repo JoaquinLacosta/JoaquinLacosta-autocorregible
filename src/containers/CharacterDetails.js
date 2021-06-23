@@ -3,7 +3,6 @@ import { useParams, Redirect } from "react-router-dom"
 import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
-import Loader from "../components/Loader"
 import useLocalStorage from "../hooks/useLocalStorage"
 import "./styles/CharacterDetails.scss"
 
@@ -20,7 +19,11 @@ const CharacterDetails = () => {
           setDetails([data.data])
         }
       })
-      .catch(err => alert("Error calling api"))
+      .catch(err => Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se encontraron resultados',
+    }))
   }, [])
 
   if(!token) {
@@ -34,7 +37,7 @@ const CharacterDetails = () => {
         <div className="Black-filter"></div>
         <div className="Hero__description">
           {typeof details == "undefined" ? <div className="Description__container">
-              <Loader />
+            <div class="alkemy-spinner"></div>
           </div> :
             details.map(item => (
               <div className="Description__container" key={item.id}>

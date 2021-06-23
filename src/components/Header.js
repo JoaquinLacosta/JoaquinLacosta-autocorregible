@@ -1,32 +1,25 @@
 import React, { useContext } from "react"
-import "./styles/Header.scss"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import AppContext from "../context/AppContext"
 
 const Header = ({ isLogin, isHeroes }) => {
   const { logOut } = useContext(AppContext)
   const hasUser = localStorage.getItem("token")
   return(
-    <header className="Header">
-      <div className="Header__title">
-        <h2 className="Header__title-item">
-        <Link to="/">Heroes App</Link>
-        </h2>
-      </div>
-      <nav className="Header__nav">
-        <ul className="Nav__list">
-          <li className={isHeroes ? "Nav__list-item selected" : "Nav__list-item"}>
-            <Link to="/heroes">Heroes</Link>
+        <ul className="nav nav-tabs bg-primary">
+          <li className="nav-item">
+            <NavLink exact activeClassName="active" className="nav-link" to="/">Home</NavLink>
           </li>
-          <li className={isLogin ? "Nav__list-item selected" : "Nav__list-item"}>
+          <li className="nav-item">
+            <NavLink exact activeClassName="active" className="nav-link" to="/search">Search</NavLink>
+          </li>
+          <li className="nav-item">
             {
-              !hasUser ? <Link to="/login">Login</Link>
-              : <Link onClick={logOut} to="/login">LogOut</Link>
+              !hasUser ? <NavLink exact activeClassName="active" className="nav-link" to="/login">Login</NavLink>
+              : <NavLink className="nav-link" onClick={logOut} to="/login">LogOut</NavLink>
             }
           </li>
         </ul>
-      </nav>
-    </header>
   )
 }
 

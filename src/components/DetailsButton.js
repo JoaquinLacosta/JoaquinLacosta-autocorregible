@@ -1,6 +1,5 @@
 import React from "react"
 import { useHistory } from "react-router-dom"
-import "./styles/DetailsButton.scss"
 
 const DetailsButton = (id) => {
   let history = useHistory()

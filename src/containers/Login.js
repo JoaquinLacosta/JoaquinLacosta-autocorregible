@@ -37,15 +37,26 @@ const Login = () => {
         .then(res => {
           if(res.status == 200) {
             localStorage.setItem("token" ,res.data.token)
-            setMessage("Logged")
+            swal.fire({
+              icon: 'success',
+              title: 'Pudiste loguearte. Serás redirigido al home',
+              text: '',})
             history.push("/")
           }
         })
         .catch(err => {
           if(err) {
-            setMessage("Login Error")
+            Swal.fire({
+              icon: 'error',
+              title: 'Ups...',
+              text: 'Error al loguearse!',
+            })
           }
-          setMessage("Wrong email or password")
+          Swal.fire({
+            icon: 'warning',
+            title: 'Alerta',
+            text: 'Datos incorrectos',
+        })
         })
     }
   }
@@ -58,11 +69,13 @@ const Login = () => {
         <div className="Form__container">
           <form onSubmit={handleSubmit}>
             <div>
-              <input onChange={handleChange} required type="email" name="email" placeholder="Email"/>
-              <input onChange={handleChange} required type="password" name="password" placeholder="Password"/>
+              <label for="email" class="alkemy-form-label">Email</label>
+              <input minLength="8" className="alkemy-form-control" onChange={handleChange} required type="email" name="email" placeholder="Email"/>
+              <label for="password" class="alkemy-form-label">Password</label>
+              <input minLength="4" className="alkemy-form-control" onChange={handleChange} required type="password" name="password" placeholder="Password"/>
               <div className="Button__wrapper">
                 <span className={message == "Logged" ? "Error-message login" : "Error-message"}>{message}</span>
-                <button type="submit">Login</button>
+                <button className="alkemy-btn-primary" type="submit">Login</button>
               </div>
             </div>
           </form>
