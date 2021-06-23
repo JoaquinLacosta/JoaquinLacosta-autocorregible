@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Header from "../components/Header"
 import { Formik, Field, Form } from "formik"
 import { useHistory } from "react-router-dom"
+import { Post } from "../services/HttpService"
 import axios from "axios"
 import Footer from "../components/Footer"
 import "./styles/Login.scss"
@@ -21,21 +22,14 @@ const Login = () => {
           <Formik
             initialValues={{ email: "", password: "" }}
             onSubmit={values => {
-              axios.post(proxy+url, JSON.stringify(values), {
-                headers: { 
-                  'Access-Control-Allow-Origin': 'true',
-                  'Content-Type': 'application/json'
-                }
-              })
+              Post(proxy+url, JSON.stringify(values))
                 .then(res => {
-                  if(res.status == 200) {
-                    localStorage.setItem("token" ,res.data.token)
+                    localStorage.setItem("token" ,res.token)
                     swal.fire({
                       icon: 'success',
                       title: 'Pudiste loguearte. Serás redirigido al home',
                       text: '',})
                     history.push("/")
-                  }
                 })
                 .catch(err => {
                   if(err) {

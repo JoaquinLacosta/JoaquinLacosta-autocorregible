@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom"
 import axios from "axios"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { Get } from "../services/HttpService"
 import { Formik, Form, Field } from "formik"
 import CharacterCard from "../components/CharacterCard"
 import "./styles/Heroes.scss"
@@ -35,8 +36,8 @@ const Heroes = () => {
                 title: 'Ups...',
                 text: 'No se pudieron obtener los datos!',})
               } else {
-                axios.get(proxy+api+values.search)
-                  .then(res => setResults(res.data.results))
+                Get(proxy+api+values.search)
+                  .then(res => setResults(res.results))
                   .catch(err => {
                     swal.fire({
                       icon: 'error',
