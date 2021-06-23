@@ -12,20 +12,6 @@ const Login = () => {
   const proxy = "https://thingproxy.freeboard.io/fetch/"
   const url = "http://challenge-react.alkemy.org"
 
-
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if(typeof form.email == "undefined") {
-      setMessage("Invalid email")
-    } else if(!form.password) {
-      setMessage("Invalid password")
-    } else if(form.email && form.password) {
-  
-    }
-  }
-
   return(
     <>
       <Header isLogin/>
