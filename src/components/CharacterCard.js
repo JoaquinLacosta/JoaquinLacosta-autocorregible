@@ -72,7 +72,7 @@ const CharacterCard = (props) => {
             : <AddButtom {...props}  onClick={isHero ? Hero(props) : Villain(props)} />
           }
           
-          <button onClick={() => history.push(`/character/${props.id}`)} className="alkemy-btn-primary">Details</button>
+          <button onClick={() => history.push(`/character/${props.id}`)} style={{marginLeft: "5px"}} className="alkemy-btn-primary">Details</button>
         </div>
       </div>
     </div>
