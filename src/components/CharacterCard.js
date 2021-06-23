@@ -54,12 +54,18 @@ const CharacterCard = (props) => {
       <img src={props.image.url}/>
       <div className="Character__data-wrapper">
           <h5 className="card-title">{props.name}</h5>
-          <p className="card-text">Intelligence: {props.powerstats.intelligence}</p>
-          <p className="card-text">Strength: {props.powerstats.strength}</p>
-          <p className="card-text">Speed: {props.powerstats.speed}</p>
-          <p className="card-text">Durability: {props.powerstats.durability}</p>
-          <p className="card-text">Power: {props.powerstats.power}</p>
-          <p className="card-text">Combat: {props.powerstats.combat}</p>
+          {
+            props.isTeam
+              ? <>
+              <p className="card-text">Intelligence: {props.powerstats.intelligence}</p>
+              <p className="card-text">Strength: {props.powerstats.strength}</p>
+              <p className="card-text">Speed: {props.powerstats.speed}</p>
+              <p className="card-text">Durability: {props.powerstats.durability}</p>
+              <p className="card-text">Power: {props.powerstats.power}</p>
+              <p className="card-text">Combat: {props.powerstats.combat}</p>
+              </>
+              : <></>
+          }
         <div className="Character__buttons">
           {
             props.isTeam ? <RemoveButton onClick={handleRemove(props)} title="Remove from team" />
